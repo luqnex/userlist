@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.userlist.entities.User;
+import com.api.userlist.exceptionHandler.NotFoundException;
 import com.api.userlist.services.UserService;
 
 @RestController
