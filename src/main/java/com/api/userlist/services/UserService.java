@@ -9,8 +9,6 @@ import com.api.userlist.repositories.UserRepository;
 import com.api.userlist.services.exceptions.EntityNotFoundException;
 import com.api.userlist.services.exceptions.IllegalArgumentException;
 
-import jakarta.validation.Valid;
-
 @Service
 public class UserService {
 	
@@ -22,15 +20,15 @@ public class UserService {
 	}
 
 	public User findById(Long id) {
-		return userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User id is not found"));
+		return userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Usuário não encotrado"));
 	}
 	
-	public User save(@Valid User user) {
+	public User save( User user) {
 		return userRepository.save(user);
 	}
 	
 	public void deleteById(Long id) {
-		User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Insert one valid id"));
+		User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Id não encotrado!"));
 		
 		userRepository.deleteById(user.getId());	
 	}

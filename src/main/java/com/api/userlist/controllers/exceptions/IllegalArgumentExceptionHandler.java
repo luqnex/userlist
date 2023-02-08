@@ -18,7 +18,7 @@ public class IllegalArgumentExceptionHandler {
 		MessageResponseError messageResponseError = new MessageResponseError();
 		
 		messageResponseError.setTimestamp(Instant.now());
-		messageResponseError.setError("Id not found");
+		messageResponseError.setError("id_not_found");
 		messageResponseError.setMessage(error.getMessage());
 		messageResponseError.setStatus(HttpStatus.NOT_FOUND.value());
 		

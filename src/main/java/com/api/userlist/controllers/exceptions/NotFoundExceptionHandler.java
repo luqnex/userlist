@@ -18,7 +18,7 @@ public class NotFoundExceptionHandler {
 		MessageResponseError messageResponseError = new MessageResponseError();
 		
 		messageResponseError.setTimestamp(Instant.now());
-		messageResponseError.setError("Not found entity");
+		messageResponseError.setError("not_found_entity");
 		messageResponseError.setMessage(error.getMessage());
 		messageResponseError.setStatus(HttpStatus.NOT_FOUND.value());
 		
