@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.userlist.entities.User;
-import com.api.userlist.exceptionHandler.NotFoundException;
 import com.api.userlist.services.UserService;
 
 @RestController
@@ -42,10 +41,10 @@ public class UserController {
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Object> delete(@PathVariable Long id) {
-		ResponseEntity<Object> response = userService.delete(id);
+	public ResponseEntity<?> delete(@PathVariable Long id) {
+		userService.deleteById(id);
 		
-		return response;
+		return ResponseEntity.ok().build();
 	}
 	
 }
