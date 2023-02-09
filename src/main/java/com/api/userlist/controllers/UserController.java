@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api.userlist.entities.User;
 import com.api.userlist.services.UserService;
 
-import jakarta.validation.Valid;
-
 @RestController
 @RequestMapping(value = "/users")
 public class UserController {
@@ -37,16 +35,13 @@ public class UserController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<User> save(@Valid @RequestBody User user) {
-		User userSave = userService.save(user);
-		System.out.println(userSave);
-		return ResponseEntity.ok().body(userSave);
+	public ResponseEntity<User> save( @RequestBody User user) {
+		return userService.save(user);
 	}
 	
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 		userService.deleteById(id);
-		
 		return ResponseEntity.ok().build();
 	}
 	

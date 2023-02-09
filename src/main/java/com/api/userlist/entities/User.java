@@ -19,11 +19,11 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id;
 	
-	@NotNull(message = "Não deve ser nulosss")
+	@NotNull(message = "Nome não deve ser nulo")
     @Size(min = 2, max = 30)
 	private String name;
 	
-	@NotNull
+	@NotNull(message = "Email não deve ser nulo")
 	@Email
 	private String email;
 	

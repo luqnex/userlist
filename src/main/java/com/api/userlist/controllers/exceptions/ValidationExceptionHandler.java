@@ -7,22 +7,23 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.api.userlist.services.exceptions.IllegalArgumentException;
+import com.api.userlist.services.exceptions.ValidationException;
+
 
 @ControllerAdvice
-public class IllegalArgumentExceptionHandler {
+public class ValidationExceptionHandler {
 
-	@ExceptionHandler(IllegalArgumentException.class)
-	public ResponseEntity<MessageResponseError> illegalArguments(IllegalArgumentException error) {
+	@ExceptionHandler(ValidationException.class)
+	public ResponseEntity<MessageResponseError> notFound(ValidationException error) {
 		
 		MessageResponseError messageResponseError = new MessageResponseError();
 		
 		messageResponseError.setTimestamp(Instant.now());
-		messageResponseError.setError("id_not_found");
+		messageResponseError.setError("bad_request");
 		messageResponseError.setMessage(error.getMessage());
-		messageResponseError.setStatus(HttpStatus.NOT_FOUND.value());
+		messageResponseError.setStatus(HttpStatus.BAD_REQUEST.value());
 		
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(messageResponseError);
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messageResponseError);
 		
 	}
 	
